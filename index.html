@@ -37,7 +37,7 @@
     opacity: 0.35;
   }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
     position: relative;
     height: 100vh;
@@ -74,7 +74,7 @@
       radial-gradient(ellipse at 50% 60%, rgba(139,92,246,0.2), transparent 70%);
   }
 
-  .-content {
+  .hero-content {
     position: relative;
     text-align: center;
     animation: fadeUp 1.4s ease both;
@@ -86,7 +86,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .-eyebrow {
+  .hero-eyebrow {
     font-size: 0.7rem;
     letter-spacing: 0.45em;
     text-transform: uppercase;
@@ -145,7 +145,7 @@
     background: linear-gradient(to bottom, var(--purple), transparent);
   }
 
-  /* ── INTRO ── */
+  /* INTRO */
   .intro {
     padding: 110px 24px 80px;
     max-width: 660px;
@@ -200,7 +200,7 @@
     color: var(--muted);
   }
 
-  /* ── BLEED PHOTO ── */
+  /* BLEED PHOTO */
   .bleed-photo {
     position: relative;
     height: 65vh;
@@ -218,7 +218,6 @@
 
   .bleed-photo:hover img { transform: scale(1.0); }
 
-  /* Blends photo into page bg top and bottom */
   .bleed-photo::before,
   .bleed-photo::after {
     content: '';
@@ -239,7 +238,6 @@
     background: linear-gradient(to top, var(--bg), transparent);
   }
 
-  /* Purple tint over photo */
   .bleed-photo-tint {
     position: absolute;
     inset: 0;
@@ -265,7 +263,7 @@
     opacity: 0.6;
   }
 
-  /* ── GALLERY ── */
+  /* GALLERY */
   .gallery-section {
     padding: 80px 24px 100px;
     max-width: 1080px;
@@ -367,7 +365,7 @@
     color: var(--purple-light);
   }
 
-  /* ── QUOTE ── */
+  /* QUOTE */
   .quote-section {
     padding: 100px 24px;
     text-align: center;
@@ -414,7 +412,7 @@
     opacity: 0.6;
   }
 
-  /* ── TIMELINE ── */
+  /* TIMELINE */
   .timeline-section {
     padding: 100px 24px;
     max-width: 680px;
@@ -478,7 +476,7 @@
     color: var(--muted);
   }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer {
     padding: 70px 24px 50px;
     text-align: center;
