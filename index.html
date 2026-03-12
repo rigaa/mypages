@@ -384,8 +384,68 @@ nav.scrolled {
 .timeline-section {
   padding:100px 48px 120px; max-width:960px; margin:auto;
 }
+
+/* LIVE CLOCK */
+.since-box {
+  margin-top:60px; margin-bottom:72px;
+  border:1px solid var(--border); border-radius:6px;
+  padding:48px 40px; text-align:center;
+  background:linear-gradient(135deg, rgba(124,58,237,0.07), rgba(139,92,246,0.03));
+  position:relative; overflow:hidden;
+}
+.since-box::before {
+  content:'';
+  position:absolute; top:-1px; left:10%; right:10%;
+  height:1px;
+  background:linear-gradient(to right, transparent, var(--violet), transparent);
+  opacity:0.5;
+}
+.since-box::after {
+  content:'';
+  position:absolute; bottom:-1px; left:10%; right:10%;
+  height:1px;
+  background:linear-gradient(to right, transparent, var(--violet), transparent);
+  opacity:0.5;
+}
+.since-label {
+  font-size:0.58rem; letter-spacing:0.48em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:32px; display:block;
+}
+.since-units {
+  display:flex; justify-content:center; align-items:flex-end;
+  gap:0; flex-wrap:wrap;
+}
+.since-unit {
+  display:flex; flex-direction:column; align-items:center;
+  padding:0 18px;
+  border-right:1px solid var(--border);
+}
+.since-unit:last-child { border-right:none; }
+.since-num {
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:clamp(2rem,5vw,3.8rem); color:var(--lavender);
+  line-height:1; min-width:2ch; text-align:center;
+  transition:opacity .15s;
+}
+.since-unit-label {
+  margin-top:10px; font-size:0.52rem;
+  letter-spacing:0.38em; text-transform:uppercase; color:var(--muted);
+}
+.since-start {
+  margin-top:28px; font-size:0.62rem;
+  letter-spacing:0.28em; color:var(--muted); opacity:0.5;
+}
+.since-start em { color:var(--violet); font-style:normal; opacity:1; }
+.since-pulse {
+  display:inline-block; width:6px; height:6px;
+  background:var(--violet); border-radius:50%;
+  margin:0 10px 2px; vertical-align:middle;
+  box-shadow:0 0 10px var(--glow);
+  animation:blink 1s ease infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
 .timeline {
-  margin-top:72px;
   display:grid; grid-template-columns:1fr 70px 1fr;
   position:relative;
 }
@@ -551,6 +611,10 @@ footer::before {
   .bleed-duo-item { height:42vw; min-height:200px; }
   .bleed-duo-divider { display:none; }
   .sec-title { flex-direction:column; align-items:flex-start; gap:8px; }
+  .since-box { padding:36px 20px; }
+  .since-unit { padding:0 10px; }
+  .since-num { font-size:clamp(1.5rem,6vw,2.5rem); }
+  .timeline-section { padding:80px 24px; }
 }
 @media (max-width:520px) {
   .hero h1 { font-size:clamp(2.8rem,15vw,5rem); }
@@ -726,10 +790,45 @@ footer::before {
     <h2>Jejak <em>Perjalanan</em></h2>
     <span class="sec-title-sub">Kisah yang membentuk kita</span>
   </div>
-  <div class="timeline">
 
+  <!-- LIVE COUNTDOWN SINCE 2023 -->
+  <div class="since-box reveal">
+    <span class="since-label">✦ Perjalanan ini telah berlangsung selama ✦</span>
+    <div class="since-units">
+      <div class="since-unit">
+        <div class="since-num" id="since-years">0</div>
+        <div class="since-unit-label">Tahun</div>
+      </div>
+      <div class="since-unit">
+        <div class="since-num" id="since-months">0</div>
+        <div class="since-unit-label">Bulan</div>
+      </div>
+      <div class="since-unit">
+        <div class="since-num" id="since-days">0</div>
+        <div class="since-unit-label">Hari</div>
+      </div>
+      <div class="since-unit">
+        <div class="since-num" id="since-hours">0</div>
+        <div class="since-unit-label">Jam</div>
+      </div>
+      <div class="since-unit">
+        <div class="since-num" id="since-minutes">0</div>
+        <div class="since-unit-label">Menit</div>
+      </div>
+      <div class="since-unit">
+        <div class="since-num" id="since-seconds">0</div>
+        <div class="since-unit-label">Detik</div>
+      </div>
+    </div>
+    <p class="since-start">
+      <span class="since-pulse"></span>
+      Dimulai sejak <em>7 September 2023</em> · dan terus berjalan
+    </p>
+  </div>
+
+  <div class="timeline">
     <div class="tl-left reveal">
-      <div class="tl-date">Awal Mula</div>
+      <div class="tl-date">7 September 2023</div>
       <div class="tl-title">Pertemuan Pertama</div>
       <div class="tl-desc">Sebuah pertemuan sederhana yang ternyata mengubah segalanya. Di sinilah cerita dimulai.</div>
     </div>
@@ -743,13 +842,13 @@ footer::before {
 
     <div class="tl-blank"></div>
     <div class="tl-right reveal">
-      <div class="tl-date">Bersama</div>
+      <div class="tl-date">2023</div>
       <div class="tl-title">Kenangan Tak Terlupakan</div>
       <div class="tl-desc">Tawa, cerita, dan momen kecil yang menjadi hal terbesar dalam hidup.</div>
     </div>
 
     <div class="tl-left reveal">
-      <div class="tl-date">Petualangan</div>
+      <div class="tl-date">2024</div>
       <div class="tl-title">Menjelajah Bersama</div>
       <div class="tl-desc">Setiap perjalanan terasa berbeda ketika dilalui bersama. Setiap jalan baru menjadi kenangan lama.</div>
     </div>
@@ -761,7 +860,6 @@ footer::before {
       <div class="tl-title">Selalu di Hati</div>
       <div class="tl-desc">Kenangan ini tidak akan pergi. Ia tinggal, tumbuh, dan selalu hangat setiap diingat kembali.</div>
     </div>
-
   </div>
 </section>
 
@@ -883,7 +981,38 @@ for(let i=0;i<32;i++){
   pc.appendChild(p);
 }
 
-/* SMOOTH SCROLL */
+/* LIVE COUNTDOWN SINCE JAN 1 2023 */
+const startDate = new Date('2023-09-07T00:00:00');
+function updateSince() {
+  const now = new Date();
+  let y = now.getFullYear() - startDate.getFullYear();
+  let mo = now.getMonth() - startDate.getMonth();
+  let d = now.getDate() - startDate.getDate();
+  let h = now.getHours() - startDate.getHours();
+  let mi = now.getMinutes() - startDate.getMinutes();
+  let s = now.getSeconds() - startDate.getSeconds();
+  if(s<0){s+=60;mi--;}
+  if(mi<0){mi+=60;h--;}
+  if(h<0){h+=24;d--;}
+  if(d<0){
+    mo--;
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    d+=prevMonth.getDate();
+  }
+  if(mo<0){mo+=12;y--;}
+  const set = (id,val) => {
+    const el=document.getElementById(id);
+    if(el) el.textContent=String(val).padStart(2,'0');
+  };
+  set('since-years',y);
+  set('since-months',mo);
+  set('since-days',d);
+  set('since-hours',h);
+  set('since-minutes',mi);
+  set('since-seconds',s);
+}
+updateSince();
+setInterval(updateSince, 1000);
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
